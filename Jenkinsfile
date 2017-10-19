@@ -27,9 +27,9 @@ pipeline {
 				}
 			}
         }
-		stage('Testeo Integracion') {
+		stage('Pruebas de carga') {
 			steps {
-				echo '----- Testeo automático -----'
+				echo '----- Pruebas de carga -----'
 			}
 		}
     }
