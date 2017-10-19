@@ -15,7 +15,7 @@ pipeline {
               }
             }
 			parallel {
-				stage('Deploy Produccion') {
+				stage('Deploy Web') {
 					steps {
 						build job: 'MT - Deploy', parameters: [text(name: 'DeployOrigen', value: "${KBDir}"), text(name: 'DeployDestino', value: "${MTDir}")]
 					}
