@@ -7,7 +7,7 @@ pipeline {
 				MTDir = credentials('MTProduccionDir')
 			}
 			steps {
-				build job: 'Deploy', parameters: [text(name: 'Directorio', value: "${MTDir}")]
+				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTDir}")]
 			}
 		}
         stage('Deploy Produccion') {
