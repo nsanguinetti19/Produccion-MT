@@ -7,7 +7,7 @@ pipeline {
 				BatchDir = credentials('MTBatchDir')
 			}
 			steps {
-				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTBatchDir}")]
+				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${BatchDir}")]
 			}
 		}
 		stage('Clean Produccion'){
