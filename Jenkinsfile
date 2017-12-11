@@ -10,7 +10,7 @@ pipeline {
 				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTBatchDir}")]
 			}
 		}
-		tage('Clean Produccion'){
+		stage('Clean Produccion'){
 			environment {
 				MTDir = credentials('MTProduccionDir')
 			}
