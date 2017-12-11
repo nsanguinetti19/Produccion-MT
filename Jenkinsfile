@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+		stage('Clean directory'){
+			environment {
+				MTDir = credentials('MTProduccionDir')
+			}
+			steps {
+				build job: 'Deploy', parameters: [text(name: 'Directorio', value: "${MTDir}")]
+			}
+		}
         stage('Deploy Produccion') {
 			environment {
 				KBDir = credentials('MTKBDir')
@@ -14,9 +22,6 @@ pipeline {
                 currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
             }
-			stage('Clean directory'){
-				build job: 'Deploy', parameters: [text(name: 'Directorio', value: "${MTDir}")]
-			}
 			parallel {
 				stage('Deploy Web') {
 					steps {
