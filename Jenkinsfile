@@ -2,12 +2,14 @@ pipeline {
     agent any
 
     stages {
-		stage('Clean directory'){
+		stage('Clean directories'){
 			environment {
 				MTDir = credentials('MTProduccionDir')
+				BatchDir = credentials('MTBatchDir')
 			}
 			steps {
 				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTDir}")]
+				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTBatchDir}")]
 			}
 		}
         stage('Deploy Produccion') {
