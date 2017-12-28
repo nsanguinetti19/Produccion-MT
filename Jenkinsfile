@@ -5,17 +5,19 @@ pipeline {
 		stage('Clean Batch'){
 			environment {
 				BatchDir = credentials('MTBatchDir')
+				MTUser = credentials('MTIISUser')
 			}
 			steps {
-				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${BatchDir}")]
+				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${BatchDir}"), text(name: 'Usuario', value: "${MTUser}")]
 			}
 		}
 		stage('Clean Produccion'){
 			environment {
 				MTDir = credentials('MTProduccionDir')
+				MTUser = credentials('MTIISUser')
 			}
 			steps {
-				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTDir}")]
+				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTDir}"),  text(name: 'Usuario', value: "${MTUser}")]
 			}
 		}
         stage('Deploy Produccion') {
