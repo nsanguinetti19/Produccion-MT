@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-		stage('Clean Batch'){
+/*		stage('Clean Batch'){
 			environment {
 				BatchDir = credentials('MTBatchDir')
 				MTUser = credentials('MTIISUser')
@@ -10,8 +10,8 @@ pipeline {
 			steps {
 				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${BatchDir}"), text(name: 'Usuario', value: "${MTUser}")]
 			}
-		}
-		stage('Clean Produccion'){
+		}*/
+/*		stage('Clean Produccion'){
 			environment {
 				MTDir = credentials('MTProduccionDir')
 				MTUser = credentials('MTIISUser')
@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				build job: 'Clean', parameters: [text(name: 'Directorio', value: "${MTDir}"),  text(name: 'Usuario', value: "${MTUser}")]
 			}
-		}
+		}*/
         stage('Deploy Produccion') {
 			environment {
 				KBDir = credentials('MTKBDir')
