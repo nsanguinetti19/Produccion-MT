@@ -31,7 +31,7 @@ pipeline {
 		}
         stage('Deploy Produccion') {
 			environment {
-				KBDir = credentials('MTKBDir')
+				KBDir = credentials('MTTMDir')
 				BatchDir = credentials('MTBatchDir')
 				KBBatchDir = credentials('MTBatchKBDir')
 				MTDir = credentials('MTProduccionDir')
@@ -44,7 +44,7 @@ pipeline {
 			parallel {
 				stage('Deploy Web') {
 					steps {
-						build job: 'Deploy', parameters: [text(name: 'DeployOrigen', value: "${KBDir}\\Pro\\web\\"), text(name: 'DeployDestino', value: "${MTDir}")]
+						build job: 'Deploy', parameters: [text(name: 'DeployOrigen', value: "${KBDir}"), text(name: 'DeployDestino', value: "${MTDir}")]
 					}
 				}
 				stage('Deploy Batch') {
